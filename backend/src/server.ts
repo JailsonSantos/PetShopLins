@@ -12,11 +12,16 @@ const server = express();
 server.use(express.static(path.join(__dirname, '../public')));
 
 // Rotas
-server.use(mainRoutes);
+server.use('/api/', mainRoutes);
 
 server.use((req, res) => {
   res.send('Página não encotrada!');
 });
 
-// Executa os server, na port 4000
-server.listen(process.env.PORT);
+const PORT = process.env.PORT || 3001;
+
+// Executa os server, na port 3000
+server.listen(PORT, () => {
+  const url = `http://localhost:${PORT}/`;
+  console.log(`Listening on ${url}`);
+});
