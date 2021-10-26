@@ -11,6 +11,189 @@ type Pet = {
 const data: Pet[] = [
   {
     type: 'dog',
+    image: 'images/boo.jpg',
+    name: 'Boo Filhote',
+    color: 'Branco e Amarelo',
+    sex: 'Masculino'
+  },
+  {
+    type: 'dog',
+    image: 'images/bracoitaliano.jpg',
+    name: 'Braco Italiano',
+    color: 'Amarelo e Branco',
+    sex: 'Masculino'
+  },
+  {
+    type: 'dog',
+    image: 'images/dogvibe.jpg',
+    name: 'Dog Vibe',
+    color: 'Amarelo',
+    sex: 'Feminino'
+  },
+  {
+    type: 'dog',
+    image: 'images/huskysiberiano.jpeg',
+    name: 'Husky Siberiano',
+    color: 'Branco e Marron',
+    sex: 'Masculino'
+  },
+  {
+    type: 'dog',
+    image: 'images/kelpieaustraliano.jpg',
+    name: 'Kelpie Australiano',
+    color: 'Preto',
+    sex: 'Feminino'
+  },
+  {
+    type: 'dog',
+    image: 'images/labradorfilhote.jpg',
+    name: 'Labrador Filhote',
+    color: 'Branco',
+    sex: 'Masculino'
+  },
+  {
+    type: 'dog',
+    image: 'images/lhasaapso.jpeg',
+    name: 'Ihasa Apso',
+    color: 'Branco e Marron',
+    sex: 'Feminino'
+  },
+  {
+    type: 'dog',
+    image: 'images/pigtail.jpg',
+    name: 'Pig Tail',
+    color: 'Branco',
+    sex: 'Feminino'
+  },
+  {
+    type: 'dog',
+    image: 'images/saobernardo.png',
+    name: 'Sao Bernardo',
+    color: 'Branco e Laranja',
+    sex: 'Masculino'
+  },
+  {
+    type: 'dog',
+    image: 'images/shin-tzu.jpg',
+    name: 'Shin Tzu',
+    color: 'Branco',
+    sex: 'Feminino'
+  },
+  {
+    type: 'cat',
+    image: 'images/BrasileirodePelocurto.jpg',
+    name: 'Br de Pelo curto',
+    color: 'Branco e Cinza',
+    sex: 'Masculino'
+  },
+  {
+    type: 'cat',
+    image: 'images/britishshorthair.jpg',
+    name: 'British Shorthair',
+    color: 'Cinza',
+    sex: 'Feminino'
+  },
+  {
+    type: 'cat',
+    image: 'images/Chausie.jpg',
+    name: 'Chausie',
+    color: 'Laranja',
+    sex: 'Masculino'
+  },
+  {
+    type: 'cat',
+    image: 'images/GermanRex.jpg',
+    name: 'German Rex',
+    color: 'Branco e Laranja',
+    sex: 'Masculino'
+  },
+  {
+    type: 'cat',
+    image: 'images/munchkin.png',
+    name: 'Munchkin',
+    color: 'Preto e Laranja',
+    sex: 'Masculino'
+  },
+
+  {
+    type: 'cat',
+    image: 'images/Shortair.jpg',
+    name: 'Shortair',
+    color: 'Branco Listrado',
+    sex: 'Feminino'
+  },
+  {
+    type: 'cat',
+    image: 'images/Thai.jpg',
+    name: 'Thai',
+    color: 'Branco e Marron',
+    sex: 'Masculino'
+  },
+  {
+    type: 'dog',
+    image: 'images/vanturco.jpg',
+    name: 'Van Turco',
+    color: 'Branco e Laranja',
+    sex: 'Feminino'
+  },
+  {
+    type: 'fish',
+    image: 'images/betta.jpg',
+    name: 'Betta',
+    color: 'Vermelho',
+    sex: 'Masculino'
+  },
+  {
+    type: 'fish',
+    image: 'images/coridora.jpg',
+    name: 'Coridora',
+    color: 'Vermelho Listrado',
+    sex: 'Masculino'
+  },
+  {
+    type: 'fish',
+    image: 'images/guppy.jpg',
+    name: 'Guppy',
+    color: 'Azul claro  ',
+    sex: 'Masculino'
+  },
+  {
+    type: 'fish',
+    image: 'images/kinguio.jpg',
+    name: 'Kinguio',
+    color: 'Vermelho',
+    sex: 'Feminino'
+  },
+  {
+    type: 'fish',
+    image: 'images/myaquarin.jpg',
+    name: 'My Aquarin',
+    color: 'Azul Turqueza',
+    sex: 'Masculino'
+  },
+  {
+    type: 'fish',
+    image: 'images/peixegatosiames.jpg',
+    name: 'Peixe Gato Siames',
+    color: 'Vermelho e branco',
+    sex: 'Feminino'
+  },
+  {
+    type: 'fish',
+    image: 'images/schermetelling.jpg',
+    name: 'Scherme Telling',
+    color: 'Laranja Pintado',
+    sex: 'Masculino'
+  },
+  {
+    type: 'fish',
+    image: 'images/vova.jpg',
+    name: 'Vova',
+    color: 'Laranja',
+    sex: 'Feminino'
+  },
+  {
+    type: 'dog',
     image: 'images/pastor-alemao.jpg',
     name: 'Pastor-alemão',
     color: 'Amarelo e Preto',
@@ -131,9 +314,13 @@ const data: Pet[] = [
 ]
 
 export const Pet = {
-  // Funçãao que busca todos os Pets
+  // Funçãao que busca todos os Pets em ordem alfabética
   getAll: (): Pet[] => {
-    return data;
+    return data.sort(function (a, b) {
+      var nameA = a.name.toUpperCase();
+      var nameB = b.name.toUpperCase();
+      return (nameA < nameB) ? -1 : (nameA > nameB) ? 1 : 0;
+    });
   },
 
   // Função de filtro dos Pets pelo tipo

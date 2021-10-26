@@ -22,7 +22,7 @@ export const dogs = (req: Request, res: Response) => {
   res.json({
     menu: createMenuObject('dog'),
     banner: {
-      category: "Todos os Animais",
+      category: "Cachorros",
       background: "/images/banner_dog.jpg",
     },
     list
