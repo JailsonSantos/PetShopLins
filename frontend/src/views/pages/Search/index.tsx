@@ -12,7 +12,8 @@ import {
   Imagem,
   AnimalName,
   AnimalColor,
-  AnimalSex
+  AnimalSex,
+  AreaText
 } from "./styled";
 
 import { api } from '../../../services/api';
@@ -46,28 +47,26 @@ export function Search() {
 
   const [allSearchAnimals, setAllSearchAnimals] = useState<DataJson>();
 
+  query = localStorage.getItem("query") || '';
+
   useEffect(() => {
 
     async function searchAnimals() {
-
-      let query = localStorage.getItem("query");
-
       if (!query) {
         history.push('/');
       }
-
       const animalsResponse = await api.get<DataJson>(`/api/search/?q=${query}`);
       setAllSearchAnimals(animalsResponse.data);
-
-      console.log(animalsResponse.data)
-
     }
     searchAnimals();
   }, [query]);
 
   if (allSearchAnimals !== undefined) {
     var { list, query } = allSearchAnimals;
+
   }
+
+  console.log(query)
 
   return (
     <>
@@ -76,7 +75,7 @@ export function Search() {
           all: false,
           dog: false,
           cat: false,
-          fish: false
+          fish: false,
         }
       }} />
 
@@ -87,9 +86,11 @@ export function Search() {
             list?.map((pet, index) => (
               <ItemsArea key={index}>
                 <Imagem src={pet.image} />
-                <AnimalName> {pet.name} </AnimalName>
-                <AnimalColor>Cor: {pet.color}</AnimalColor>
-                <AnimalSex>Gênero: {pet.sex}</AnimalSex>
+                <AreaText>
+                  <AnimalName> {pet.name} </AnimalName>
+                  <AnimalColor>Cor: {pet.color}</AnimalColor>
+                  <AnimalSex>Gênero: {pet.sex}</AnimalSex>
+                </AreaText>
               </ItemsArea>
             )) : <H2>Nenhum resultado encontrado</H2>
           }

@@ -10,6 +10,7 @@ import {
 
 export function PageNotFound() {
 
+  localStorage.removeItem("query");
   return (
     <>
       <Header dados={{

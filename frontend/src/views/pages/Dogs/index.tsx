@@ -11,7 +11,8 @@ import {
   Imagem,
   AnimalName,
   AnimalColor,
-  AnimalSex
+  AnimalSex,
+  AreaText
 } from "./styled";
 
 import { api } from '../../../services/api';
@@ -74,9 +75,11 @@ export function Dogs() {
             list?.map((pet, index) => (
               <ItemsArea key={index}>
                 <Imagem src={pet.image} />
-                <AnimalName> {pet.name} </AnimalName>
-                <AnimalColor>Cor: {pet.color}</AnimalColor>
-                <AnimalSex>Gênero: {pet.sex}</AnimalSex>
+                <AreaText>
+                  <AnimalName> {pet.name} </AnimalName>
+                  <AnimalColor>Cor: {pet.color}</AnimalColor>
+                  <AnimalSex>Gênero: {pet.sex}</AnimalSex>
+                </AreaText>
               </ItemsArea>
             ))
           }

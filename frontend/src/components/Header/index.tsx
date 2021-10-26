@@ -1,4 +1,5 @@
 import React, { ChangeEvent, useState } from "react";
+import { MdOutlinePets } from 'react-icons/md';
 
 import {
   Container,
@@ -26,35 +27,31 @@ type Props = {
   dados: DataJson;
 }
 
-
 export function Header({ dados }: Props) {
 
-  const { menu } = dados;
+  let { menu } = dados;
 
-  const [searchAnimal, setSearchAnimal] = useState<string>("");
-
-  let query = localStorage.getItem("query");
+  const [searchAnimal, setSearchAnimal] = useState<string>(localStorage.getItem("query") || '');
 
   function handleInput(event: ChangeEvent<HTMLInputElement>) {
-
-    localStorage.setItem("query", event.target.value);
-
     setSearchAnimal(event.target.value);
+    localStorage.setItem("query", event.target.value);
   }
+
+  console.log(searchAnimal);
 
   return (
     <Container>
       <HeaderArea>
         <HeaderContainer>
-          <LogoLink href="/">PetShopLins</LogoLink>
+          <LogoLink href="/"> <MdOutlinePets /> PetShopLins </LogoLink>
           <FormSearch method="GET" action="/search">
             <FormInput
               type="search"
               name="q"
               placeholder="Pesquise por raça"
-              onChange={handleInput}
-              value={query ? query : ''}
-
+              onChange={(handleInput)}
+              value={searchAnimal !== undefined ? searchAnimal : ""}
             />
           </FormSearch>
         </HeaderContainer>

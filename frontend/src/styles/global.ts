@@ -16,13 +16,13 @@ export default createGlobalStyle`
 
   :root{
     --pagebg: #FFF;
-    --main: #102581;
+    --main: #78de00;
     --bglink: rgba(0, 0, 0, 0.3);
     --darkbg: #FFF;
     --lightbg: #000;
     --lighter: #444;
 
-    --blue: #005693;
+    --verde: #78de00;
     --white: #faf0e6;
   }
 `;

@@ -11,7 +11,8 @@ import {
   Imagem,
   AnimalName,
   AnimalColor,
-  AnimalSex
+  AnimalSex,
+  AreaText
 } from "./styled";
 
 import { api } from '../../../services/api';
@@ -43,12 +44,17 @@ export function Cats() {
   const [allCats, setAllCats] = useState<DataJson>();
 
   useEffect(() => {
+
+    localStorage.removeItem("query");
+
     async function listCats() {
+
       const catsResponse = await api.get<DataJson>('/api/cats/');
 
       setAllCats(catsResponse.data);
     }
-    localStorage.removeItem("query");
+
+
     listCats();
 
   }, []);
@@ -76,9 +82,11 @@ export function Cats() {
             list?.map((pet, index) => (
               <ItemsArea key={index}>
                 <Imagem src={pet.image} />
-                <AnimalName> {pet.name} </AnimalName>
-                <AnimalColor>Cor: {pet.color}</AnimalColor>
-                <AnimalSex>Gênero: {pet.sex}</AnimalSex>
+                <AreaText>
+                  <AnimalName> {pet.name} </AnimalName>
+                  <AnimalColor>Cor: {pet.color}</AnimalColor>
+                  <AnimalSex>Gênero: {pet.sex}</AnimalSex>
+                </AreaText>
               </ItemsArea>
             ))
           }

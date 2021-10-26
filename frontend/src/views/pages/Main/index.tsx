@@ -11,7 +11,8 @@ import {
   Imagem,
   AnimalName,
   AnimalColor,
-  AnimalSex
+  AnimalSex,
+  AreaText
 } from "./styled";
 
 import { api } from '../../../services/api';
@@ -67,16 +68,20 @@ export function Main() {
       }} />
 
       <Container>
-        <SectionArea style={{ backgroundImage: `url(${allAnimals?.banner.background})` }}> {allAnimals?.banner.category} </SectionArea>
+        <SectionArea style={{ backgroundImage: `url(${allAnimals?.banner.background})` }}>
+          {allAnimals?.banner.category}
+        </SectionArea>
         <H2> {allAnimals?.banner.category} disponíveis para adoção.</H2>
         <ListArea>
           {
             list?.map((pet, index) => (
               <ItemsArea key={index}>
                 <Imagem src={pet.image} />
-                <AnimalName> {pet.name} </AnimalName>
-                <AnimalColor>Cor: {pet.color}</AnimalColor>
-                <AnimalSex>Gênero: {pet.sex}</AnimalSex>
+                <AreaText>
+                  <AnimalName> {pet.name} </AnimalName>
+                  <AnimalColor>Cor: {pet.color}</AnimalColor>
+                  <AnimalSex>Gênero: {pet.sex}</AnimalSex>
+                </AreaText>
               </ItemsArea>
             ))
           }
